@@ -57,4 +57,38 @@ Create a start script in package.json
 [x] npm start
 [x] npm run server
 
-[x]make .env file
+[x] make .env file
+    NODE_ENV=development
+    PORT=5000
+
+[Heroku] 
+Connect Github
+Search for Repo
+Look for Manual deploy
+Click deploy
+Wait a couple seconds 
+It should start deploying
+
+[x] create folder called client
+[x] cd into client
+[x] npx create-react-app .
+[x] npm run build
+
+Add the following to [server.js]
+const express = require('express')
+server.use(express.static(path.join(__dirname, 'client/build')))
+
+Add the following to [index.js] 
+server.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+})
+
+[package.json]
+under scripts
+"heroku-postbuild": "cd client && npm i & npm run build"
+
+Optional in [package.json]
+"engines": {
+    "node": "14.15.4",
+    "npm": "6.14.11"
+},
