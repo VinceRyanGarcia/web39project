@@ -1,6 +1,5 @@
 require('dotenv').config()
 const path = require('path')
-
 const express = require('express')
 
 const server = express()
@@ -13,7 +12,7 @@ server.use(express.static(path.join(__dirname, 'client/build')))
 
 console.log(process.env.NODE_ENV)
 
-// on Heroku machine, an env variable is called "NODE_ENV" -> "production"
+/// on Heroku machine, an env variable is called "NODE_ENV" -> "production"
 if (process.env.NODE_ENV === 'development') {
   const cors = require('cors')
   server.use(cors())
